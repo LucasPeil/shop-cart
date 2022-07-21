@@ -7,6 +7,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.cart-item img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+}
+.cart-item {
+  align-items: center;
+  /*grid-template-columns: auto 1fr auto;
+  grid-column-gap: 1.5rem;*/
+  margin: 1.5rem 0;
+  border: 1px solid red;
+}
+
+.cart-item h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+.amount-btn {
+  width: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-btn{
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.38rem;
+  cursor: pointer;
+  font-size: 1rem;
+  background:  rgba(184, 36, 36,0.8);
+  border: none;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 1.7rem ;
+  padding: 0.6rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

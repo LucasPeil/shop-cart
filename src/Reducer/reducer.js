@@ -53,7 +53,7 @@ const reducer = (state, action) =>{
                 .map((item)=>{
                     if(item.id === action.payload.id){
                         if(action.payload.type==="increase"){
-                            return {item, amount: item.amount +1}
+                            return {...item, amount: item.amount +1}
                         }
                         if(action.payload.type === "decrease"){
                             return {...item, amount: item.amount-1}

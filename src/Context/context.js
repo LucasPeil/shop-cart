@@ -1,7 +1,10 @@
 import {createContext, useReducer, useContext, useEffect} from "react"
 import reducer from "../Reducer/reducer"
 import cartItems  from "../Utils/data"
-const url = "https://api.jsonbin.io/v3/b/62d36993b34ef41b73c427a1"
+const url = "https://course-api.com/react-useReducer-cart-project"
+
+const AppContext = createContext();
+
 const initialState = {
     loading: false,
     cart: cartItems,
@@ -10,9 +13,7 @@ const initialState = {
     message: null
 }
 
-export const AppContext = createContext();
-
-export const AppContextProvider = ({children})=>{
+ const AppContextProvider = ({children})=>{
     const [state, dispatch] = useReducer(reducer,initialState);
 
     const clearCart = ()=>{
@@ -29,7 +30,7 @@ export const AppContextProvider = ({children})=>{
         const cartItem = await fetch(url).then((res)=> res.json())
         dispatch({type: "DISPLAY_ITEMS", payload: cartItem})  
     }
-    const toggleAnmount = (id, type)=>{
+    const toggleAmount = (id, type)=>{
         dispatch({type: "TOGGLE_AMOUNT", payload: {id,type}})
     }
     const remove = (id)=>{
@@ -43,9 +44,10 @@ export const AppContextProvider = ({children})=>{
     }, [state.cart])
 
     return(
-        <AppContext.Provider value={{...state,clearCart,remove,decrease,increase,toggleAnmount}}>
+        <AppContext.Provider value={{...state,clearCart,remove,decrease,increase,toggleAmount}}>
             {children}
         </AppContext.Provider>
     )
 }
 export const useAppContext = ()=> useContext(AppContext)
+export {AppContext,AppContextProvider}

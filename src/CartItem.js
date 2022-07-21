@@ -1,27 +1,28 @@
 import React from 'react'
 import { useAppContext } from './Context/context'
+import {FaAngleDown, FaAngleUp} from "react-icons/fa"
 
 const CartItem = ({id,img,title,price,amount}) => {
     const {remove, toggleAmount} = useAppContext()
   return (
-    <main className="car-item">
+    <main className=" d-flex justify-content-around cart-item">
             <img src={img} alt={title}/>
             <div>
                 <h4>{title}</h4>
                 <h4>${price}</h4>
-                <button onClick={()=>remove(id)}>remove</button>
+                <button className='remove-btn' onClick={()=>remove(id)}>remove</button>
             </div>
             
             <div>
                 {/*Increase*/}
-                <button onClick={toggleAmount(id, "increase")}> <FontAwesomeIcon icon="fa-solid fa-angle-up" /></button>
+                <button className='amount-btn' onClick={()=>toggleAmount(id, "increase")}> <FaAngleUp/></button>
             </div>
 
                 {/*Amount*/}
                 <p>{amount}</p>
                 {/*Decrease*/}
             <div>
-            <button onClick={toggleAmount(id, "decrease")}> <FontAwesomeIcon icon="fa-solid fa-angle-down" /></button>
+            <button className='amount-btn' onClick={()=>toggleAmount(id, "decrease")}> <FaAngleDown /></button>
             </div>
 
     </main>
