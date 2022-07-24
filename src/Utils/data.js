@@ -9,7 +9,7 @@ export default [
     },
     {
       id: 2,
-      title: 'google pixel ',
+      title: 'Google pixel ',
       price: 499.99,
       img:
         'https://res.cloudinary.com/diqqf3eq2/image/upload/v1583371867/phone-1_gvesln.png',

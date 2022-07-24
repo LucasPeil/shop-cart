@@ -3,31 +3,32 @@ import { useAppContext } from './Context/context'
 import CartItem from './CartItem'
 const CartContainer = () => {
     const {cart, total, clearCart} = useAppContext()
+    let fixedCart = cart.filter((item)=> item.id != "recB6qcHPxb62YJ75")
     if(cart.length === 0){
         return(
-            <main>
+            <main className='cart'>
                 <h2>COMPRAS</h2>
-                <h4>No momento não há itens na sua lista de compras</h4>
+                <h4 className='empty-cart'>No momento não há itens na sua lista de compras</h4>
             </main>
         )
     }
   return (
-    <main>
+    <main className='cart'>
         <header>
             <h2>COMPRAS</h2>
         </header>
          <div>
-            {cart.map((item)=>{
+            {fixedCart.map((item)=>{
                 return <CartItem key={item.id} {...item}/>
             })}
          </div>
 
          <footer>
             <hr/>
-            <div>
-                <h4>total <span>{total}</span> </h4>
+            <div className='cart-total'>
+                <h4>Total <span>{total}</span> </h4>
             </div>
-            <button onClick={clearCart}>Clear Cart</button>
+            <button className='btn-clear' onClick={clearCart}>Clear Cart</button>
          </footer>
     </main>
   )
