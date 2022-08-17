@@ -4,7 +4,6 @@ import cartItems  from "../Utils/data"
 const url = "https://course-api.com/react-useReducer-cart-project"
 
 const AppContext = createContext();
-
 const initialState = {
     loading: false,
     cart: cartItems,
@@ -28,7 +27,7 @@ const initialState = {
     const fetchData = async ()=>{
         dispatch({type:"LOADING"})
         const cartItem = await fetch(url).then((res)=> res.json())
-        dispatch({type: "DISPLAY_ITEMS", payload: cartItem})  
+        dispatch({type: "DISPLAY_ITEMS", payload: cartItem.filter((item)=> item.id != "recB6qcHPxb62YJ75")})  
     }
     const toggleAmount = (id, type)=>{
         dispatch({type: "TOGGLE_AMOUNT", payload: {id,type}})

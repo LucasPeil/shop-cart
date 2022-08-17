@@ -6,7 +6,7 @@ const reducer = (state, action) =>{
             return {...state, cart:[]};
         case "REMOVE":
             return{...state, cart: state.cart.filter((item)=> item.id !== action.payload)}
-        case "INCREASE":
+       /* case "INCREASE":
             let tempCartIncrease = state.cart.map((item)=>{
                 if (item.id === action.payload){
                     return {...item, counter: item.counter +1}
@@ -23,13 +23,14 @@ const reducer = (state, action) =>{
                 return item
             });
             return {...state, cart:tempCartDecrease};
-
+            */
         case "TOTALS":
+            
             let {total, amount} = state.cart.reduce((cartTotal, cartItem)=>{
                 let{amount, price} = cartItem;
                 const itemTotal = amount * price
                 cartTotal.total += itemTotal;
-                cartTotal.amount = amount
+                cartTotal.amount += amount
                 return cartTotal
 
             },
